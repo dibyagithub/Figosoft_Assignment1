@@ -1,0 +1,45 @@
+package com.figosoft.qa.testcases;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.figosoft.qa.base.TestBase;
+import com.figosoft.qa.pages.Flipkart_page;
+import com.figosoft.qa.util.Testutil;
+
+public class Flipkartpagetest extends TestBase{
+	
+	Flipkart_page flkartpage;
+	public Flipkartpagetest(){
+		
+	}
+	
+	@BeforeMethod
+	public void setUp(){
+	System.setProperty("driver.chrome.driver","E:\\Selenium\\Driver\\chromedriver.exe");
+	driver= new ChromeDriver();
+    driver.manage().window().maximize();
+	driver.manage().deleteAllCookies();
+	driver.manage().timeouts().pageLoadTimeout(Testutil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
+	driver.manage().timeouts().implicitlyWait(Testutil.IMPLICIY_TIMEOUT, TimeUnit.SECONDS);
+	driver.get("https://www.flipkart.com/");	
+	}
+	
+	@Test
+	public void productsearchTest(){
+		flkartpage.searchProduct("iPhone XR (64GB) - Yellow");	
+	}
+	@Test
+	public String veryfyProdPrice(){
+		return flkartpage.getPrice();
+	}
+	@AfterMethod
+	public void tearDown(){
+		driver.close();
+	}
+
+}

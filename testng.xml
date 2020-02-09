@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="Figosoftsuit" parallel="tests">
+  <test name="amazon">
+    <classes>
+      <class name="com.figosoft.qa.testcases.Amazonepagetest"/>
+    </classes>
+  </test>
+  <test name="flipkart">
+    <classes>
+      <class name="com.figosoft.qa.testcases.Flipkartpagetest"/>
+    </classes>
+  </test>
+  <test name="common">
+    <classes>
+      <class name="com.figosoft.qa.testcases.Common"/>
+    </classes>
+  </test>
+</suite> 
+
